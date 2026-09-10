@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قائمة البوت الملونة</title>
+  <!-- استدعاء مكتبة تليجرام الرسمية للـ WebApp -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 20px;
+      margin: 0;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .btn {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      cursor: pointer;
+      transition: transform 0.1s ease, opacity 0.2s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    /* ألوان الأزرار المخصصة */
+    .btn-green { background-color: #22c55e; } /* أخضر */
+    .btn-blue  { background-color: #3b82f6; } /* أزرق */
+    .btn-purple{ background-color: #a855f7; } /* بنفسجي */
+    .btn-red   { background-color: #ef4444; } /* أحمر */
+  </style>
+</head>
+<body>
+
+  <h2>اختر الخيار المطلوب:</h2>
+
+  <div class="btn-container">
+    <button class="btn btn-green" onclick="sendData('files')">📂 كل الملخصات م.1</button>
+    <button class="btn btn-blue" onclick="sendData('schedule')">🗓️ جدول مبنى فوة</button>
+    <button class="btn btn-purple" onclick="sendData('stats')">📊 إحصائياتي</button>
+    <button class="btn btn-red" onclick="sendData('terms')">🚫 شروط الاستخدام</button>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // توسيع الصفحة لتأخذ ارتفاع الشاشة
+
+    function sendData(action) {
+      // إرسال البيانات للبوت وإغلاق الصفحة
+      tg.sendData(action);
+    }
+  </script>
+</body>
+</html>
